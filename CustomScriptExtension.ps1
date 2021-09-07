@@ -11,8 +11,30 @@ Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Par
 
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0
 
-
-
+## Variables
+ 
+$bgInfoFolder = "C:\BgInfo"
+$bgInfoFolderContent = $bgInfoFolder + "\*"
+$itemType = "Directory"
+$bgInfoUrl = "https://download.sysinternals.com/files/BGInfo.zip"
+$logonBgiUrl = "https://tinyurl.com/yxlxbgun"
+$bgInfoZip = "C:\BgInfo\BgInfo.zip"
+$bgInfoEula = "C:\BgInfo\Eula.txt"
+$logonBgiZip = "C:\BgInfo\LogonBgi.zip"
+$bgInfoRegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
+$bgInfoRegkey = "BgInfo"
+$bgInfoRegType = "String"
+$bgInfoRegkeyValue = "C:\BgInfo\Bginfo.exe C:\BgInfo\logon.bgi /timer:0 /nolicprompt"
+$regKeyExists = (Get-Item $bgInfoRegPath -EA Ignore).Property -contains $bgInfoRegkey
+ 
+$foregroundColor1 = "Red"
+$foregroundColor2 = "Yellow"
+$writeEmptyLine = "`n"
+ 
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+## Download started
+ 
 Write-Host ($writeEmptyLine + "# BgInfo download started")`
 -foregroundcolor $foregroundColor1 $writeEmptyLine
  
