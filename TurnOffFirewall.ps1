@@ -1,3 +1,4 @@
+set-executionpolicy remotesigned -force
 
 
 Set-TimeZone -Id "Eastern Standard Time" -PassThru
