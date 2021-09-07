@@ -1,4 +1,4 @@
-
+Set-ExecutionPolicy unrestricted -force
 
 ## Variables
  
