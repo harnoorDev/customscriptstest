@@ -14,6 +14,6 @@ Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Par
 #Showing All System Tray Icons
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F
 
-:: To kill and restart explorer
+
 taskkill /f /im explorer.exe
 start explorer.exe
