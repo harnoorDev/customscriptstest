@@ -28,29 +28,19 @@ $bgInfoRegkeyValue = "C:\BgInfo\Bginfo.exe C:\BgInfo\logon.bgi /timer:0 /nolicpr
 $regKeyExists = (Get-Item $bgInfoRegPath -EA Ignore).Property -contains $bgInfoRegkey
  
 $foregroundColor1 = "Red"
-$foregroundColor2 = "Yellow"
+
 $writeEmptyLine = "`n"
  
-## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 
-## Download started
- 
-Write-Host ($writeEmptyLine + "# BgInfo download started")`
--foregroundcolor $foregroundColor1 $writeEmptyLine
- 
-## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 
+
  
 ## Create BgInfo folder on C: if it not exists, else delete it's content
  
 If (!(Test-Path -Path $bgInfoFolder)){New-Item -ItemType $itemType -Force -Path $bgInfoFolder
-    Write-Host ($writeEmptyLine + "# BgInfo folder created")`
-    -foregroundcolor $foregroundColor2 $writeEmptyLine
- }Else{Write-Host ($writeEmptyLine + "# BgInfo folder already exists")`
-    -foregroundcolor $foregroundColor1 $writeEmptyLine
+  
+ }Else{
+   
     Remove-Item $bgInfoFolderContent -Force -Recurse -ErrorAction SilentlyContinue
-    Write-Host ($writeEmptyLine + "# Content existing BgInfo folder deleted")`
-    -foregroundcolor $foregroundColor1 $writeEmptyLine}
+}
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
@@ -62,8 +52,7 @@ Start-BitsTransfer -Source $bgInfoUrl -Destination $bgInfoZip
 [System.IO.Compression.ZipFile]::ExtractToDirectory($bgInfoZip, $bgInfoFolder)
 Remove-Item $bgInfoZip
 Remove-Item $bgInfoEula
-Write-Host ($writeEmptyLine + "# bginfo.exe available")`
--foregroundcolor $foregroundColor2 $writeEmptyLine
+
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
@@ -73,8 +62,7 @@ Invoke-WebRequest -Uri $logonBgiUrl -OutFile $logonBgiZip
 [System.Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem") | Out-Null
 [System.IO.Compression.ZipFile]::ExtractToDirectory($logonBgiZip, $bgInfoFolder)
 Remove-Item $logonBgiZip
-Write-Host ($writeEmptyLine + "# logon.bgi available")`
--foregroundcolor $foregroundColor2 $writeEmptyLine
+
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
@@ -84,23 +72,20 @@ If ($regKeyExists -eq $True){Write-Host ($writeEmptyLine + "# BgInfo regkey exis
 -foregroundcolor $foregroundColor1 $writeEmptyLine
 }Else{
 New-ItemProperty -Path $bgInfoRegPath -Name $bgInfoRegkey -PropertyType $bgInfoRegType -Value $bgInfoRegkeyValue
-Write-Host ($writeEmptyLine + "# BgInfo regkey added")`
--foregroundcolor $foregroundColor2 $writeEmptyLine}
+}
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 ## Run BgInfo
  
 C:\BgInfo\Bginfo.exe C:\BgInfo\logon.bgi /timer:0 /nolicprompt
-Write-Host ($writeEmptyLine + "# BgInfo has run")`
--foregroundcolor $foregroundColor2 $writeEmptyLine
+
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 ## Exit PowerShell window 3 seconds after completion
  
-Write-Host ($writeEmptyLine + "# Script completed, the PowerShell window will close in 3 seconds")`
--foregroundcolor $foregroundColor1 $writeEmptyLine
+
 Start-Sleep 3 
 stop-process -Id $PID
  
@@ -117,8 +102,7 @@ Invoke-WebRequest -uri $uri -OutFile $out
 Invoke-WebRequest -uri $uri2 -OutFile $out2
 $msifile = Get-ChildItem -Path $out -File -Filter '*.ms*' 
 $msifile2 = Get-ChildItem -Path $out2 -File -Filter '*.ms*' 
-write-host "Open VPN $msifile "
-write-host "Open $msifile2 "
+
 }
 
 Function Install_OpenVPN{
