@@ -72,11 +72,11 @@ C:\BgInfo\Bginfo.exe C:\BgInfo\logon.bgi /timer:0 /nolicprompt
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
-## Exit PowerShell window 3 seconds after completion
+## Run Another script after 3 sec sleep
  
 
 Start-Sleep 3 
-stop-process -Id $PID
+
+.\DownloadInstallMSI.ps1
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-.\DownloadInstallMSI.ps1
