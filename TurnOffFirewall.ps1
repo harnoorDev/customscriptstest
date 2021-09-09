@@ -1,4 +1,3 @@
-Set-ExecutionPolicy unrestricted -force
 
 
 Set-TimeZone -Id "Eastern Standard Time" -PassThru
