@@ -1,4 +1,8 @@
 
+Set-ExecutionPolicy RemoteSigned -CurrentScope Process -Force
+Set-ExecutionPolicy RemoteSigned -CurrentScope CurrentUser -Force
+Set-ExecutionPolicy RemoteSigned -CurrentScope LocalMachine -Force
+
 
 Set-TimeZone -Id "Eastern Standard Time" -PassThru
 
@@ -12,4 +16,4 @@ Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Par
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0
 
 
-PowerShell.exe -ExecutionPolicy Remote-signed -File ./ShowAllSystemTrayIcons.ps1
+ ./ShowAllSystemTrayIcons.ps1
