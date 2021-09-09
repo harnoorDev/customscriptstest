@@ -9,3 +9,6 @@ REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoT
 
 taskkill /f /im explorer.exe
 start explorer.exe
+
+
+./ShowAllSystemTrayIconsSecondTime.ps1
