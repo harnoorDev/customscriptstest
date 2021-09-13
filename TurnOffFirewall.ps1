@@ -3,6 +3,14 @@ Set-ExecutionPolicy RemoteSigned -CurrentScope Process -Force
 Set-ExecutionPolicy RemoteSigned -CurrentScope CurrentUser -Force
 Set-ExecutionPolicy RemoteSigned -CurrentScope LocalMachine -Force
 
+# Show all tray icons
+Function ShowTrayIcons {
+	Write-Output "Showing all tray icons..."
+	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
+		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoAutoTrayNotify" -Type DWord -Value 1
+}
 
 Set-TimeZone -Id "Eastern Standard Time" -PassThru
 
@@ -16,4 +24,7 @@ Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Par
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0
 
 
- ./ShowAllSystemTrayIcons.ps1
+ShowTrayIcons
+
+
+ #./ShowAllSystemTrayIcons.ps1
