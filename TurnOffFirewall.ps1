@@ -16,7 +16,7 @@ Set-TimeZone -Id "Eastern Standard Time" -PassThru
 
 netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" protocol=icmpv4:8,any dir=in action=allow 
 
-Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
+#Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
 
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile' -name "EnableFirewall" -Value 0
 
