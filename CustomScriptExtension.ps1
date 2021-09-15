@@ -67,7 +67,7 @@ New-ItemProperty -Path $bgInfoRegPath -Name $bgInfoRegkey -PropertyType $bgInfoR
  
 ## Run BgInfo
  
-C:\BgInfo\Bginfo.exe C:\BgInfo\logon.bgi /timer:0 /nolicprompt
+C:\BgInfo\Bginfo.exe C:\BgInfo\logon.bgi /timer:0 /nolicprompt /silent
 
  
 ## ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
