@@ -6,7 +6,7 @@ $out = "C:\OpenVPNInstaller.msi"
 $out2 = "C:\SQLDataSync.msi"
 #$username = $env:UserName
 #$out3 = "C:\Users\$username\Desktop\Show_All_Icons.ps1"
-$out3 = "C:\Show_All_Icons.ps1"
+$out3 = "C:\ShowIconsAndSetupBGInfo.ps1"
 
 
 Function Download_Installers{
