@@ -28,4 +28,6 @@ Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Par
 ShowTrayIcons
 
 
+C:\BgInfo\Bginfo.exe C:\BgInfo\logon.bgi /timer:0 /nolicprompt /silent
+
  #./ShowAllSystemTrayIcons.ps1
